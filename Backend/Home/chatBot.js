@@ -1,7 +1,7 @@
 import express from "express";
 import { GoogleGenerativeAI } from "@google/generative-ai";
-
-const genAI = new GoogleGenerativeAI("AIzaSyBDDoh4MiDSf6uAKi0FJvVtLZnhO2zdqC0");
+import dotenv from "dotenv"
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 const chat = model.startChat({
   history: [
