@@ -1,20 +1,30 @@
 import Webcam from "react-webcam";
+import '../css/webcam.css'
 import { useCallback,useRef, useState } from "react"; // import useState
 
-const CustomWebcam = () => {
+const CustomWebcam = ({setCropImage,detectDisease,setDiseaseArr}) => {
   const webcamRef = useRef(null);
   const [imgSrc, setImgSrc] = useState(null); // initialize it
   const [state,setState]=useState('capture');
   const capture = useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
     setImgSrc(imageSrc);
+    
     setState('photo');
   }, [webcamRef]);
+  const detect=()=>{
+    setCropImage(imgSrc);
+
+    detectDisease();
+    console.log('calling from webcam')
+  };
   const retake = () => {
     setImgSrc(null);
+    setDiseaseArr([])
+    
   };
   return (
-    <div className="container">
+    <div >
       {imgSrc ? (
         <img src={imgSrc} alt="webcam" />
       ) : (
@@ -22,9 +32,14 @@ const CustomWebcam = () => {
       )}
       <div className="btn-container">
         {imgSrc ? (
-          <button onClick={retake}>Retake photo</button>
+          <div>
+            <button className="retake" onClick={retake}>Retake photo</button>
+            <button className="detect" onClick={detect}>Detect Disease</button>
+          </div>
+          
+          
         ) : (
-          <button onClick={capture}>Capture photo</button>
+          <button className="capture" onClick={capture}>Capture Photo</button>
         )}
       </div>
     </div>

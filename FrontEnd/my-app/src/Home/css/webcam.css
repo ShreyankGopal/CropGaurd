@@ -1,0 +1,64 @@
+.btn-container {
+    display: flex;
+    justify-content: center; /* Center align the buttons */
+    margin-top: 20px;
+  }
+  
+  .btn-container button {
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    min-width: 150px;
+    text-transform: uppercase;
+    
+  }
+  
+  /* Capture button */
+  .capture{
+    background-color: #28a745; /* Green */
+    color: white;
+  }
+  
+  .capture:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+  }
+  
+  /* Retake button */
+  .retake {
+    background-color: #dc3545; /* Red */
+    color: white;
+    margin-left: 10px;
+  }
+  
+  .retake:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+  }
+  .detect {
+    background-color: #dc3545; /* Red */
+    color: white;
+    margin-left: 10px;
+  }
+  
+  .detect:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 600px) {
+    .btn-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .btn-container button {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }

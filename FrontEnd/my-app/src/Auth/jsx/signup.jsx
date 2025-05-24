@@ -13,8 +13,8 @@ const SignupPage = () => {
       try{
         const response=await api.post('/signup',{name:name,email:email,password:password})
         console.log(response)
-        if(response.status==200){
-          navigate('/');
+        if(response.status==201){
+          navigate('/login');
         }
        
         

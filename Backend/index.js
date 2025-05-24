@@ -9,6 +9,8 @@ import login from "./Auth/login.js";
 import home from "./Home/home.js";
 import cookieParser from "cookie-parser";
 import logout from "./Auth/logout.js";
+import detection from "./diseaseDetection/detectDisease.js";
+import multer from "multer";
 dotenv.config(); // Load environment variables
 
 const app = express();
@@ -28,6 +30,7 @@ app.use('/',signup);
 app.use('/',login);
 app.use('/',home);
 app.use('/',logout)
+app.use('/',detection)
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
