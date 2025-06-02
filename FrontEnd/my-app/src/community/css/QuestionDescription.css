@@ -1,0 +1,437 @@
+/* QuestionDescription.css */
+
+.question-description-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    padding: 24px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  .question-description-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  /* Loading and Error States */
+  .loading-spinner,
+  .error-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #dcfce7;
+    border-top: 4px solid #22c55e;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 16px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .loading-spinner p {
+    color: #16a34a;
+    font-size: 1.125rem;
+    margin: 0;
+  }
+  
+  .error-message p {
+    color: #ef4444;
+    font-size: 1.125rem;
+    margin-bottom: 16px;
+  }
+  
+  .retry-button {
+    background: #22c55e;
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .retry-button:hover {
+    background: #16a34a;
+    transform: translateY(-1px);
+  }
+  
+  /* Header */
+  .header {
+    margin-bottom: 24px;
+  }
+  
+  .back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff;
+    border: 2px solid #22c55e;
+    color: #22c55e;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+  
+  .back-button:hover {
+    background: #22c55e;
+    color: #ffffff;
+    transform: translateY(-1px);
+  }
+  
+  .back-button .icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  /* Question Card */
+  .question-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 32px;
+    margin-bottom: 32px;
+    border-left: 4px solid #22c55e;
+  }
+  
+  .question-header {
+    margin-bottom: 24px;
+  }
+  
+  .question-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #166534;
+    margin: 0 0 16px 0;
+    line-height: 1.3;
+  }
+  
+  .question-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: center;
+  }
+  
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #16a34a;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
+  .meta-icon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .question-content {
+    border-top: 1px solid #f0fdf4;
+    padding-top: 24px;
+  }
+  
+  .question-text {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: #374151;
+    margin: 0 0 24px 0;
+  }
+  
+  .question-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #dcfce7;
+    color: #166534;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
+  .tag-icon {
+    width: 14px;
+    height: 14px;
+  }
+  
+  /* Replies Section */
+  .replies-section {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    margin-bottom: 32px;
+  }
+  
+  .replies-header {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    color: #ffffff;
+    padding: 20px 32px;
+  }
+  
+  .replies-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .replies-icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .replies-list {
+    padding: 0;
+  }
+  
+  .reply-card {
+    padding: 24px 32px;
+    border-bottom: 1px solid #f0fdf4;
+    transition: background-color 0.2s ease;
+  }
+  
+  .reply-card:hover {
+    background: #f9fdfb;
+  }
+  
+  .reply-card:last-child {
+    border-bottom: none;
+  }
+  
+  .reply-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  
+  .reply-user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .user-icon {
+    width: 16px;
+    height: 16px;
+    color: #16a34a;
+  }
+  
+  .username {
+    font-weight: 600;
+    color: #166534;
+  }
+  
+  .reply-date {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #6b7280;
+    font-size: 0.875rem;
+  }
+  
+  .clock-icon {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .reply-content p {
+    margin: 0;
+    line-height: 1.6;
+    color: #374151;
+  }
+  
+  .no-replies {
+    padding: 48px 32px;
+    text-align: center;
+    color: #6b7280;
+  }
+  
+  .no-replies-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 16px;
+    color: #d1d5db;
+  }
+  
+  .no-replies p {
+    margin: 0;
+    font-size: 1.125rem;
+  }
+  
+  /* Add Reply Section */
+  .add-reply-section {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 32px;
+    border-left: 4px solid #10b981;
+  }
+  
+  .add-reply-title {
+    color: #166534;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 20px 0;
+  }
+  
+  .reply-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .reply-textarea {
+    width: 100%;
+    padding: 16px;
+    border: 2px solid #d1fae5;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 100px;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+  }
+  
+  .reply-textarea:focus {
+    outline: none;
+    border-color: #22c55e;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+  }
+  
+  .reply-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .char-count {
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+  
+  .submit-reply-button {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 8px rgba(34, 197, 94, 0.3);
+  }
+  
+  .submit-reply-button:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+  }
+  
+  .submit-reply-button:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .button-icon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .button-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid #ffffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .question-description-container {
+      padding: 16px;
+    }
+    
+    .question-card,
+    .add-reply-section {
+      padding: 24px 20px;
+    }
+    
+    .replies-header {
+      padding: 16px 20px;
+    }
+    
+    .reply-card {
+      padding: 20px;
+    }
+    
+    .question-title {
+      font-size: 1.75rem;
+    }
+    
+    .question-meta {
+      gap: 16px;
+    }
+    
+    .reply-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    
+    .reply-actions {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;
+    }
+    
+    .submit-reply-button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .question-meta {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    
+    .back-button {
+      width: 100%;
+      justify-content: center;
+    }
+  }

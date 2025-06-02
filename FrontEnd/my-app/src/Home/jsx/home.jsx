@@ -12,6 +12,7 @@ const HomePage = () => {
   const [activeTab, setActiveTab] = useState('detect');
   const [auth, setAuth] = useState(0);
   const [cropImg, setCropImg] = useState(null);
+  const [diseaseArr, setDiseaseArr] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,6 +31,52 @@ const HomePage = () => {
 
     fetchData();
   }, []);
+  function dataURLtoFile(dataurl, filename) {
+    var arr = dataurl.split(','),
+        mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[arr.length - 1]), 
+        n = bstr.length, 
+        u8arr = new Uint8Array(n);
+    while(n--){
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], filename, {type:mime});
+  }
+  const detectDisease = async (cropImg) => {
+    if(!cropImg) {
+      console.log('No image selected');
+      return;
+    }
+    console.log("image clicked and processing ...")
+    const file = dataURLtoFile(cropImg, "cropImage.jpg");
+    const form = new FormData();
+    form.append("image", file);
+
+    try {
+      const response = await api.post('/detectDisease', form, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        }
+      });
+      setDiseaseArr(response.data);
+      console.log(diseaseArr);
+    } catch(error) {
+      console.log(error);
+    }
+  };
+
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      console.log("file uploaded")
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setCropImg(reader.result);
+        detectDisease(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
@@ -53,9 +100,28 @@ const HomePage = () => {
           )}
 
           {activeTab === 'CamOpen' && (
+            <div>
+
+            
             <CustomWebcam 
-              setCropImage={setCropImg} 
+              setCropImage={setCropImg}
+              detectDisease={detectDisease}
+               setDiseaseArr={setDiseaseArr}
             />
+            {diseaseArr.length > 0 && (
+            <div className='diseaseResult'>
+            <h3>Disease Detection Results:</h3>
+            <ul>
+              {diseaseArr.map((disease, index) => (
+                <li key={index}>
+                  There is {Math.round(disease[1] * 100) / 100}% chance that your crop has the disease {disease[0]}
+                </li>
+              ))}
+              </ul>
+              </div>
+            )}
+            </div>
+            
           )}
 
           {activeTab === 'chat' && <AIChat />}

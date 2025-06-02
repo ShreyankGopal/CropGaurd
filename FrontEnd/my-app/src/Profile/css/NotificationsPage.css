@@ -1,0 +1,315 @@
+/* NotificationsPage.css */
+
+.notifications-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px;
+    background: linear-gradient(135deg, #f0f9f0 0%, #e8f5e8 100%);
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Header Section */
+  .notifications-header {
+    background: linear-gradient(135deg, #2d5a2d 0%, #4a7c4a 100%);
+    border-radius: 16px;
+    padding: 24px 32px;
+    margin-bottom: 24px;
+    color: white;
+    box-shadow: 0 8px 32px rgba(45, 90, 45, 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .notifications-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 200%;
+    background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M20 20c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm-30 0c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10z'/%3E%3C/g%3E%3C/svg%3E");
+    animation: float 20s linear infinite;
+  }
+  
+  @keyframes float {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .header-title {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .bell-icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .header-title h1 {
+    font-size: 2rem;
+    margin: 0;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .unread-badge {
+    background: rgba(255, 255, 255, 0.9);
+    color: #2d5a2d;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    min-width: 24px;
+    text-align: center;
+  }
+  
+  .mark-all-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .mark-all-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+  }
+  
+  /* Notifications List */
+  .notifications-list {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(45, 90, 45, 0.1);
+  }
+  
+  .notification-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 1px solid #e1f0e1;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  .notification-item:last-child {
+    border-bottom: none;
+  }
+  
+  .notification-item:hover {
+    background: linear-gradient(135deg, #fafcfa 0%, #f5f9f5 100%);
+  }
+  
+  .notification-item.unread {
+    background: linear-gradient(135deg, #f0f9f0 0%, #e8f5e8 100%);
+    border-left: 4px solid #4a7c4a;
+  }
+  
+  .notification-item.unread::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background: #4a7c4a;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(74, 124, 74, 0.5);
+  }
+  
+  .notification-content {
+    flex: 1;
+    margin-left: 20px;
+  }
+  
+  .notification-text {
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+  
+  .replier-name {
+    font-weight: 600;
+    color: #2d5a2d;
+    margin-right: 6px;
+  }
+  
+  .action-text {
+    color: #6b8e6b;
+    margin-right: 6px;
+  }
+  
+  .question-title {
+    font-weight: 500;
+    color: #4a4a4a;
+    font-style: italic;
+  }
+  
+  .notification-time {
+    font-size: 0.85rem;
+    color: #8fa38f;
+    font-weight: 500;
+  }
+  
+  .mark-read-btn {
+    background: linear-gradient(135deg, #4a7c4a 0%, #2d5a2d 100%);
+    border: none;
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(45, 90, 45, 0.3);
+  }
+  
+  .mark-read-btn:hover {
+    transform: translateY(-2px) scale(1.1);
+    box-shadow: 0 6px 16px rgba(45, 90, 45, 0.4);
+  }
+  
+  .mark-read-btn:active {
+    transform: translateY(0) scale(0.95);
+  }
+  
+  /* Empty State */
+  .empty-state {
+    text-align: center;
+    padding: 80px 24px;
+    color: #6b8e6b;
+  }
+  
+  .empty-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 24px;
+    opacity: 0.5;
+  }
+  
+  .empty-state h3 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+    color: #4a7c4a;
+  }
+  
+  .empty-state p {
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .notifications-container {
+      padding: 16px;
+    }
+  
+    .notifications-header {
+      padding: 20px 24px;
+    }
+  
+    .header-content {
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+    }
+  
+    .header-title {
+      width: 100%;
+    }
+  
+    .mark-all-btn {
+      align-self: flex-end;
+    }
+  
+    .header-title h1 {
+      font-size: 1.6rem;
+    }
+  
+    .notification-item {
+      padding: 16px 20px;
+    }
+  
+    .notification-content {
+      margin-left: 16px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .notifications-container {
+      padding: 12px;
+    }
+  
+    .notifications-header {
+      padding: 16px 20px;
+    }
+  
+    .header-title {
+      gap: 12px;
+    }
+  
+    .bell-icon {
+      width: 24px;
+      height: 24px;
+    }
+  
+    .header-title h1 {
+      font-size: 1.4rem;
+    }
+  
+    .notification-item {
+      padding: 12px 16px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+  
+    .notification-content {
+      margin-left: 12px;
+      width: 100%;
+    }
+  
+    .mark-read-btn {
+      align-self: flex-end;
+      width: 32px;
+      height: 32px;
+    }
+  
+    .notification-text {
+      font-size: 0.9rem;
+    }
+  
+    .empty-state {
+      padding: 60px 16px;
+    }
+  
+    .empty-icon {
+      width: 48px;
+      height: 48px;
+    }
+  }

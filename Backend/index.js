@@ -11,6 +11,12 @@ import cookieParser from "cookie-parser";
 import logout from "./Auth/logout.js";
 import detection from "./diseaseDetection/detectDisease.js";
 import multer from "multer";
+import AskQuestionsForm from "./Community/AskQuestionsForm.js";
+import Questions from "./Community/QuestionsPage.js";
+import QuestionDescription from "./Community/QuestionDescription.js";
+import AddReply from "./Community/AddReply.js";
+import profile from "./Profile/Profile.js";
+import NotificationPage from "./Profile/Notification.js";
 dotenv.config(); // Load environment variables
 
 const app = express();
@@ -31,6 +37,12 @@ app.use('/',login);
 app.use('/',home);
 app.use('/',logout)
 app.use('/',detection)
+app.use('/',Questions);
+app.use('/',AskQuestionsForm)
+app.use('/',QuestionDescription);
+app.use('/',AddReply);
+app.use('/',profile);
+app.use('/',NotificationPage);
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

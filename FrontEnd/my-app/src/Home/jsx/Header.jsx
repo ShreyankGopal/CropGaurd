@@ -1,7 +1,8 @@
 import React from 'react';
-import { Users, MessageCircle, Camera } from 'lucide-react';
+import { Users, MessageCircle, Camera , CircleUser, BellPlus} from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import api from '../../api';
+
 
 const Header = ({ auth, onTabChange, activeTab }) => {
   const navigate = useNavigate();
@@ -56,6 +57,20 @@ const Header = ({ auth, onTabChange, activeTab }) => {
         >
           <Users size={20} />
           <span>Community</span>
+        </button>
+        <button
+          onClick={() => navigate('/profilePage')}
+          className={`tab-button ${activeTab === 'community' ? 'active' : ''}`}
+        >
+          <CircleUser size={20} />
+          <span>Profile</span>
+        </button>
+        <button
+          onClick={() => navigate('/notification')}
+          className={`tab-button ${activeTab === 'community' ? 'active' : ''}`}
+        >
+          <BellPlus size={20} />
+          <span></span>
         </button>
       </div>
     </header>

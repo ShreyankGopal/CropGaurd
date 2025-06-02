@@ -7,7 +7,7 @@ const CommunityQuestionSchema = new mongoose.Schema({
     Question: { type: String },                                          // optional question
     Tags: { type: [String] },                                            // array of strings (not SVGStringList in JS)
     DatePosted: { type: Date, index: true, default: Date.now },
-    Replies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Replies' }]                      // defaults to current date/tim
+    Replies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Reply' }]                      // defaults to current date/tim
   });
 
 const CommunityQuestion=mongoose.model("CommunityQuestion",CommunityQuestionSchema);

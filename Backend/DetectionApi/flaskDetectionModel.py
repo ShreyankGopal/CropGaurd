@@ -20,7 +20,7 @@ def detect_crop_disease():
 
     # Perform AI computation
     result = model(image)
-
+    print(result)
     return jsonify({"prediction": result})
 
 if __name__ == '__main__':

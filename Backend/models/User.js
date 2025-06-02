@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     Questions:[{type:mongoose.Schema.Types.ObjectId,ref:'CommunityQuestion'}] ,
-    Replies:[{type:mongoose.Schema.Types.ObjectId,ref:'Replies'}]
+    Replies:[{type:mongoose.Schema.Types.ObjectId,ref:'Reply'}]
 });
 
 const User = mongoose.model("User", userSchema);

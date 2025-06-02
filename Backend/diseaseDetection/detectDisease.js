@@ -24,11 +24,12 @@ detection.post("/detectDisease",upload.single("image"),async(req,res)=>{
           
           var arr=[]
           response.data.prediction.forEach(element => {
-            if(element.score>0.2){
-                arr.push([element.label,element.score]);
+            if(element.score>0.6){
+                arr.push([element.label,element.score*100]);
             }
 
           });
+          if(arr.length==0) arr.push(["NAN","NAN"]);
           res.send(arr);
           console.log(arr)
       }

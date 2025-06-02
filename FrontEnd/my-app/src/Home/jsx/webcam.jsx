@@ -9,13 +9,13 @@ const CustomWebcam = ({setCropImage,detectDisease,setDiseaseArr}) => {
   const capture = useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
     setImgSrc(imageSrc);
-    
+    //console.log(imageSrc)
     setState('photo');
   }, [webcamRef]);
   const detect=()=>{
     setCropImage(imgSrc);
 
-    detectDisease();
+    detectDisease(imgSrc);
     console.log('calling from webcam')
   };
   const retake = () => {

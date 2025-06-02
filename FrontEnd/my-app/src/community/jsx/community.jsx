@@ -2,33 +2,45 @@ import React, { useState, useEffect,useRef,useCallback } from 'react';
 import { Search, Plus, Newspaper, MessageCircle, Calendar, Hash } from 'lucide-react';
 import '../css/community.css'; // Import your CSS file
 import api from '../../api';
+import { useNavigate } from 'react-router-dom';
 const Community = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [questions, setQuestions] = useState([]);
   const [auth,setAuth] = useState([]);
   const [nextCursor, setNextCursor] = useState(null);
   const [loading, setLoading] = useState(false);
+  //const [user,setUser]=useState('');
   const observerRef = useRef();
-  const handleAskQuestion=async()=>{
-    api.get('/AskQuestion');
+  const navigate=useNavigate();
+  const handleCommunityNews=async ()=>{
+    navigate('/CommunityNews');
   }
+  const handleAskQuestion=async()=>{
+    navigate('/AskQuestion');
+  }
+  const handleQuestionClick=async (e)=>{
+    console.log(e);
+    navigate(`/${e}/QuestionDescription`);
+  }
+  console.log("community page");
   const fetchQuestions = useCallback(async () => {
     if (loading) return;
     setLoading(true);
+  
     try {
       const res = await api.get('/CommunityQuestions', {
-        params: {
-          cursor: nextCursor, // null for first call
-        },
+        params: { cursor: nextCursor },
       });
+  
       const { results, nextCursor: newCursor } = res.data;
-
-      setQuestions((prev) => [...prev, ...results]); // append
-      setNextCursor(newCursor); // update cursor
+      console.log(results);
+      console.log("here");
+      setQuestions((prev) => [...prev, ...results]);
+      setNextCursor(newCursor);
+      
     } catch (err) {
-      console.error(err);
+      console.error("Error fetching questions:", err);
     }
-    setLoading(false);
   }, [nextCursor, loading]);
 
   // First load
@@ -57,8 +69,10 @@ const Community = () => {
 
   // Filtered results
   const filteredQuestions = questions.filter((q) =>
-    q.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    q.Tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase().replace('#', '')))
+  (q.title?.toLowerCase().includes(searchQuery.toLowerCase()) || 
+   (q.Tags || []).some((tag) =>
+     tag?.toLowerCase().includes(searchQuery.toLowerCase().replace('#', ''))
+   ))
   );
   
   return (
@@ -87,7 +101,7 @@ const Community = () => {
               </button>
               
               <button 
-                // onClick={handleCommunityNews}
+                onClick={handleCommunityNews}
                 className="btn-community-news"
               >
                 <Newspaper className="icon-md" />
@@ -113,27 +127,27 @@ const Community = () => {
         <div className="questions-section">
         <div className="questions-list">
           {filteredQuestions.map((q) => (
-            <div key={q._id} className="question-item">
-              <h3 className="question-title">{q.title}</h3>
+            <div key={q._id} className="question-item" onClick={()=>handleQuestionClick(q._id)}>
+              <h3 className="question-title">{q.Title}</h3>
               <div className="question-tags">
                 {q.Tags.map((tag, i) => (
                   <span key={i} className="tag">
-                    <Hash className="icon-sm" />
+                    
                     {tag}
                   </span>
                 ))}
               </div>
               <div className="question-meta">
                 <div className="meta-left">
-                  <span>Posted by {q.author || 'Anonymous'}</span>
+                  <span>Posted by {q.user.name || 'Anonymous'}</span>
                   <div className="meta-date">
                     <Calendar className="icon-sm" />
-                    <span>{new Date(q.date).toLocaleDateString()}</span>
+                    <span>{new Date(q.DatePosted).toLocaleDateString()}</span>
                   </div>
                 </div>
                 <div className="replies-badge">
                   <MessageCircle className="icon-sm" />
-                  <span>{q.replies || 0} replies</span>
+                  <span>{q.replies?.length || 0} replies</span>
                 </div>
               </div>
             </div>
@@ -143,7 +157,7 @@ const Community = () => {
         {/* Loader sentinel */}
         <div ref={observerRef} style={{ height: '40px' }}></div>
 
-        {loading && <p style={{ textAlign: 'center' }}>Loading...</p>}
+        
 
         {filteredQuestions.length === 0 && !loading && (
           <div className="empty-state">
