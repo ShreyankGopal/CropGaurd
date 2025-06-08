@@ -10,7 +10,7 @@ NotificationPage.get('/notifications',authenticateToken,async(req,res)=>{
     try{
         var query={};
         query.user=userID;
-        const result=await Notification.findOne(query)
+        const result=await Notification.find(query)
         .populate({
             path:'user',
             
@@ -19,7 +19,11 @@ NotificationPage.get('/notifications',authenticateToken,async(req,res)=>{
         .populate({
             path:'Question'
         })
-        
+        .populate({
+            path: "replyBy",
+            select: "name"
+        })
+        console.log("Printing notifications below here \n");
         console.log(result);
         res.send(result);
     }

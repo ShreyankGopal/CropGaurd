@@ -9,7 +9,7 @@ const AskQuestion = () => {
     question: '',
     tags: []
   });
-  const validTags=['tomatoes','organic','pestcontrol','blight','corn','rice','wine','pomogranate','fruits','vegetables','fertility','transport','prices','rentals','schemes']
+  const validTags=['tomatoes','organic','pestcontrol','blight','corn','rice','wine','pomogranate','fruits','vegetables','fertility','transport','prices','rentals','schemes','wheat','crop','chilli','leaves','grains','fertiliser']
   const [currentTag, setCurrentTag] = useState('');
   const [errors, setErrors] = useState({});
   const [showDropdown, setShowDropdown] = useState(false);
@@ -17,6 +17,8 @@ const AskQuestion = () => {
 //   let arr=[];
 const Navigate=useNavigate()
   const handleTagButtonClick=(e)=>{
+    console.log(e);
+    console.log("added tag");
     setCurrentTag(e);
     
   } 
@@ -224,7 +226,7 @@ const Navigate=useNavigate()
                     
                     <div id="myDropdown" className="dropdown-content">
                         {arr.map((item, index) => (
-                            <button key={index} className="dropdown-button" onClick={()=>handleTagButtonClick(item)}>{item}</button>
+                            <button key={index} type="button" className="dropdown-button" onClick={()=>handleTagButtonClick(item)}>{item}</button>
                         ))}
                     </div>
                 </div>

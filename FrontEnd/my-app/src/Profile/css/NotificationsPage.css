@@ -1,14 +1,28 @@
 /* NotificationsPage.css */
 
 .notifications-container {
-    max-width: 900px;
+    width: 100%;
+    max-width: fit-content;
     margin: 0 auto;
     padding: 24px;
     background: linear-gradient(135deg, #f0f9f0 0%, #e8f5e8 100%);
     min-height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
-  
+  .back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff;
+    border: 2px solid #22c55e;
+    color: #22c55e;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
   /* Header Section */
   .notifications-header {
     background: linear-gradient(135deg, #2d5a2d 0%, #4a7c4a 100%);

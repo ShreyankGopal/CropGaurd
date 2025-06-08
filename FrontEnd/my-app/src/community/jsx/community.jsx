@@ -1,5 +1,5 @@
 import React, { useState, useEffect,useRef,useCallback } from 'react';
-import { Search, Plus, Newspaper, MessageCircle, Calendar, Hash } from 'lucide-react';
+import { Search, Plus, Newspaper, MessageCircle, Calendar, Hash, ArrowLeft } from 'lucide-react';
 import '../css/community.css'; // Import your CSS file
 import api from '../../api';
 import { useNavigate } from 'react-router-dom';
@@ -80,6 +80,10 @@ const Community = () => {
       <div className="community-wrapper">
         {/* Header */}
         <div className="community-header">
+          <button className="back-button" onClick={() => navigate('/')}>
+              <ArrowLeft className="icon" size={20} />
+              Back To Home
+          </button>
           <h1 className="community-title">
             <MessageCircle className="icon-lg" />
             Farmer Community Forum
@@ -147,7 +151,7 @@ const Community = () => {
                 </div>
                 <div className="replies-badge">
                   <MessageCircle className="icon-sm" />
-                  <span>{q.replies?.length || 0} replies</span>
+                  <span>{q.Replies?.length || 0} replies</span>
                 </div>
               </div>
             </div>

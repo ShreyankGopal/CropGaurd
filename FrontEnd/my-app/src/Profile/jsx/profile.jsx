@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react';
-import { User, MessageCircle, Calendar, Eye, MessageSquare } from 'lucide-react';
+import { User, MessageCircle, Calendar, Eye, MessageSquare , ArrowLeft} from 'lucide-react';
 import api from '../../api';
 import '../css/profile.css';
 import { useNavigate } from 'react-router-dom';
@@ -50,16 +50,20 @@ const ProfilePage = () => {
     <div className="profile-container">
       {/* Header Section */}
       <div className="profile-header">
+        <button className="back-button" onClick={() => navigate('/')}>
+              <ArrowLeft className="icon" size={20} />
+              Back To Home
+        </button>
         <div className="profile-info">
           <div className="profile-picture">
-            <img src={""} alt={""} />
+            <img src={"https://media.istockphoto.com/id/1495088043/vector/user-profile-icon-avatar-or-person-icon-profile-picture-portrait-symbol-default-portrait.jpg?s=612x612&w=0&k=20&c=dhV2p1JwmloBTOaGAtaA3AW1KSnjsdMt7-U_3EZElZ0="} alt={""} />
           </div>
           <div className="farmer-details">
             <h1>{result.name}</h1>
             <p className="email">{result.email}</p>
             <p className="join-date">
               <Calendar size={16} />
-              Member since 
+              Member since 5/11/2025
             </p>
           </div>
         </div>
@@ -68,7 +72,7 @@ const ProfilePage = () => {
           <div className="stat-card">
             <MessageCircle className="stat-icon" />
             <div className="stat-number"></div>
-            <div className="stat-label">Questions Asked {result.Question?.length || 0}</div>
+            <div className="stat-label">Questions Asked {result.Questions?.length || 0}</div>
           </div>
           <div className="stat-card">
             <MessageSquare className="stat-icon" />

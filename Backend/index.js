@@ -17,6 +17,7 @@ import QuestionDescription from "./Community/QuestionDescription.js";
 import AddReply from "./Community/AddReply.js";
 import profile from "./Profile/Profile.js";
 import NotificationPage from "./Profile/Notification.js";
+import readNotifications from "./Profile/readNotifications.js";
 dotenv.config(); // Load environment variables
 
 const app = express();
@@ -43,6 +44,7 @@ app.use('/',QuestionDescription);
 app.use('/',AddReply);
 app.use('/',profile);
 app.use('/',NotificationPage);
+app.use('/',readNotifications);
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

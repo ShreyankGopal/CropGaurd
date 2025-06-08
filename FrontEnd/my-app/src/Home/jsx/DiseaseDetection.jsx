@@ -28,7 +28,7 @@ const DiseaseDetection = ({ onCameraOpen, setCropImg }) => {
         <label className="upload-button">
           <input 
             type='file' 
-            onChange={handleFileUpload}
+            onChange={(e)=>handleFileUpload(e)}
             accept="image/*"
             style={{ display: 'none' }}
           />

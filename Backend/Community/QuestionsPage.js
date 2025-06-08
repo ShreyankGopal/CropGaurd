@@ -25,7 +25,7 @@ Questions.get('/CommunityQuestions',async (req,res)=>{
 
         // Perform query
         const questions = await CommunityQuestion.find(query)
-            .sort({ _id: -1 }) // latest first
+            .sort({ _id: -1 }) // latest first. mongodb id field contains date posted 
             .limit(limit)
             .populate('user','name');
         console.log(questions)

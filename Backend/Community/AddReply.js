@@ -26,16 +26,19 @@ AddReply.post('/AddReply',authenticateToken,async (req,res)=>{
         console.log(`question Info is ${questionInfo}`);
         const notification = new Notification({
             user: questionInfo.user._id,
-            Question: QuestionId
+            Question: QuestionId,
+            read:0,
+            replyBy:userId
+            
           });
           
           await notification.save();
           
           // Step 2: Push 0 into the read array
-          await Notification.findByIdAndUpdate(
-            notification._id,
-            { $push: { read: 0 } }
-          );
+        //   await Notification.findByIdAndUpdate(
+        //     notification._id,
+        //     { $push: { read: 0 } }
+        //   );
         const savedReply=await reply.save();
 
         await User.findByIdAndUpdate(

@@ -187,7 +187,7 @@ const QuestionDescription = ({ questionId }) => {
           <div className="replies-header">
             <h2 className="replies-title">
               <MessageCircle className="replies-icon" />
-              {/* Replies ({questionData.Replies.length}) */}
+              Replies ({questionData.Replies?.length || 0})
             </h2>
           </div>
 
