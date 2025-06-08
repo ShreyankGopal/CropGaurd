@@ -1,6 +1,6 @@
-#  AgriAid: Smart Crop Health & Farmer Support Platform
+#  CropGaurd: Smart Crop Health & Farmer Support Platform
 
-AgriAid is an intelligent web application designed to assist farmers in diagnosing plant diseases, finding remedies, and connecting with a vibrant farming community. From disease prediction to interactive support, AgriAid aims to empower farmers with technology and shared knowledge.
+CropGaurd is an intelligent web application designed to assist farmers in diagnosing plant diseases, finding remedies, and connecting with a vibrant farming community. From disease prediction to interactive support, CropGaurd aims to empower farmers with technology and shared knowledge.
 
 ##  Features
 
