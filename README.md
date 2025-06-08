@@ -37,7 +37,7 @@ AgriAid is an intelligent web application designed to assist farmers in diagnosi
 ## 📸 Screenshots
 
 
-```markdown
+
 ![CharBot](./ChatBot.png)
 ![CommunityForum](./CommunityForum.png)
 ![CommunityForum2](./CommunityForum2.png)
