@@ -5,6 +5,7 @@ import Reply from "../models/Replies.js";
 import authenticateToken from "../middlewares/tokenAuth.js";
 const profile=express.Router();
 profile.get('/profileData',authenticateToken,async(req,res)=>{
+    console.log("in profile")
     const userID=req.user.userId;
     try{
         var query={};

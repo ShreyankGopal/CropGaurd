@@ -63,7 +63,7 @@ const ProfilePage = () => {
             <p className="email">{result.email}</p>
             <p className="join-date">
               <Calendar size={16} />
-              Member since 5/11/2025
+              Member since {new Date(result.DateAdded).toLocaleDateString()}
             </p>
           </div>
         </div>
