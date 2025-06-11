@@ -39,8 +39,8 @@ const Header = ({ auth, onTabChange, activeTab , setCropImg,setDiseaseArr}) => {
             <button onClick={handleLogout} className="logout-button">Logout</button>
           ) : (
             <>
-              <button onClick={() => window.location.href = '/login'} className="login-button">Login</button>
-              <button onClick={() => window.location.href = '/signup'} className="signup-button">Sign Up</button>
+              <button onClick={() => navigate('/login')} className="login-button">Login</button>
+              <button onClick={() => navigate('/signup')} className="signup-button">Sign Up</button>
             </>
           )}
         </div>
