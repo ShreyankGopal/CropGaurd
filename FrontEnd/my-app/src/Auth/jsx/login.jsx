@@ -8,6 +8,7 @@ const LoginPage = () => {
   const [email,setEmail]=useState('');
   const [password,setPassword]=useState('');
   const navigate=useNavigate();
+  // console.log(process.env.REACT_APP_API_BASE_URL)
   async function submitForm(e){
     e.preventDefault();
     try{
@@ -16,7 +17,7 @@ const LoginPage = () => {
       navigate('/')
     }
     catch(error){
-      console.log(error.response.status)
+      console.log(error)
       if (error.response && error.response.status === 400) {
             window.alert("Invalid email or password");
         } else {
