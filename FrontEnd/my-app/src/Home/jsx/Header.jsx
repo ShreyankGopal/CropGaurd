@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import api from '../../api';
 
 
-const Header = ({ auth, onTabChange, activeTab }) => {
+const Header = ({ auth, onTabChange, activeTab , setCropImg,setDiseaseArr}) => {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -15,6 +15,16 @@ const Header = ({ auth, onTabChange, activeTab }) => {
       console.log(error);
     }
   };
+  const handleDiseaseClickButton=async()=>{
+    setCropImg(null);
+    setDiseaseArr([]);
+    onTabChange('detect')
+  }
+  const handleChatClick=async()=>{
+    setCropImg(null);
+    setDiseaseArr([]);
+    onTabChange('chat')
+  }
 
   return (
     <header className="header">
@@ -38,14 +48,14 @@ const Header = ({ auth, onTabChange, activeTab }) => {
 
       <div className="tab-navigation">
         <button
-          onClick={() => onTabChange('detect')}
+          onClick={() => handleDiseaseClickButton()}
           className={`tab-button ${activeTab === 'detect' ? 'active' : ''}`}
         >
           <Camera size={20} />
           <span>Detect Disease</span>
         </button>
         <button
-          onClick={() => onTabChange('chat')}
+          onClick={() => handleChatClick()}
           className={`tab-button ${activeTab === 'chat' ? 'active' : ''}`}
         >
           <MessageCircle size={20} />

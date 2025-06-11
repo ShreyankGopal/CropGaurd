@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../css/HomePage.css';
 import api from '../../api';
 
@@ -13,7 +13,8 @@ const HomePage = () => {
   const [auth, setAuth] = useState(0);
   const [cropImg, setCropImg] = useState(null);
   const [diseaseArr, setDiseaseArr] = useState([]);
-
+  const navigate=useNavigate();
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -87,7 +88,9 @@ const HomePage = () => {
       <Header 
         auth={auth} 
         onTabChange={handleTabChange} 
-        activeTab={activeTab} 
+        activeTab={activeTab}
+        setCropImg={setCropImg}
+        setDiseaseArr={setDiseaseArr} 
       />
 
       <main className="main-content">
@@ -117,6 +120,7 @@ const HomePage = () => {
                   There is {Math.round(disease[1] * 100) / 100}% chance that your crop has the disease {disease[0]}
                 </li>
               ))}
+              <button type='button' className='GoToChat' onClick={()=>setActiveTab('chat')}>Ask CropGuard Bot?</button>
               </ul>
               </div>
             )}
@@ -124,7 +128,7 @@ const HomePage = () => {
             
           )}
 
-          {activeTab === 'chat' && <AIChat />}
+          {activeTab === 'chat' && <AIChat cropImg={cropImg} diseaseArr={diseaseArr}/>}
         </div>
       </main>
     </div>
