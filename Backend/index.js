@@ -21,13 +21,13 @@ import readNotifications from "./Profile/readNotifications.js";
 dotenv.config(); // Load environment variables
 
 const app = express();
-const PORT = process.env.PORT || 5002;
+const PORT = process.env.PORT || 4000;
  // ✅ Allows form data parsing
 app.use(cookieParser())       
 // Middleware
 app.use(express.json());
 app.use(cors({
-    origin:"http://localhost:3000",
+    origin:process.env.ORIGIN,
     credentials:true
 }));
 
