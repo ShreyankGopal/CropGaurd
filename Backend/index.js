@@ -27,7 +27,7 @@ app.use(cookieParser())
 // Middleware
 app.use(express.json());
 app.use(cors({
-    origin: ['http://localhost:3000', 'https://cropgaurd-frontend.onrender.com/'],
+    origin: ['http://localhost:3000', 'https://cropgaurd-frontend.onrender.com'],
     credentials: true
   }));
 
