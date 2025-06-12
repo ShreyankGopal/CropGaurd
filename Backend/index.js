@@ -27,9 +27,9 @@ app.use(cookieParser())
 // Middleware
 app.use(express.json());
 app.use(cors({
-    origin:process.env.ORIGIN,
-    credentials:true
-}));
+    origin: ['http://localhost:3000', 'https://your-frontend-domain.com'],
+    credentials: true
+  }));
 
 // Sample API route
 app.use('/',chatRouter);
