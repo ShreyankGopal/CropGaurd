@@ -32,7 +32,7 @@ login.post('/login', async (req, res) => {
         // Set authentication cookie
         res.cookie("authToken", token, {
             httpOnly: true,
-            sameSite: "lax",
+            sameSite: "none",
             secure:true // Set to `true` in production (HTTPS required)
         });
 
