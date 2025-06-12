@@ -45,6 +45,9 @@ app.use('/',AddReply);
 app.use('/',profile);
 app.use('/',NotificationPage);
 app.use('/',readNotifications);
+app.get("/health", (req, res) => {
+    res.status(200).send("Server is up 🚀");
+  });
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
