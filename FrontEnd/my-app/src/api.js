@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:5002"; // Set this in .env
+const API_BASE_URL = "https://cropguard-backend.onrender.com"; // Set this in .env
 
 const api = axios.create({
   baseURL: API_BASE_URL,
