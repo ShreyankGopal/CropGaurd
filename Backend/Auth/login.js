@@ -10,6 +10,7 @@ const login = express.Router();
 
 login.post('/login', async (req, res) => {
     try {
+        console.log('login page')
         const jwtSecretKey = process.env.JWT_SECRET_KEY;
         const { email, password } = req.body;
 
@@ -27,12 +28,12 @@ login.post('/login', async (req, res) => {
 
         // Generate JWT token
         const token = jwt.sign({ userId: user._id }, jwtSecretKey, { expiresIn: "24h" });
-
+        
         // Set authentication cookie
         res.cookie("authToken", token, {
             httpOnly: true,
             sameSite: "lax",
-            secure:false // Set to `true` in production (HTTPS required)
+            secure:true // Set to `true` in production (HTTPS required)
         });
 
         res.status(200).json({ message: "Login successful" });
